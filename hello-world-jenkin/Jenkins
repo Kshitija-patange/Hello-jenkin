@@ -15,7 +15,13 @@ agent any
           
        }
        }
-   
+   stage('SonarQube'){
+        steps{
+                bat label: '', script: '''mvn sonar:sonar \
+                -Dsonar.host.url=http://localhost:9000 \
+                -Dsonar.login=fee394ce357c46b7a630e02d9a858c95169ca7c6'''
+            }
+           }
     stage('Maven Package'){
         steps{
             echo 'Project packaging stage'
