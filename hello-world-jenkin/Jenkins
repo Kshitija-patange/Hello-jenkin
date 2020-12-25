@@ -3,9 +3,8 @@ agent any
   stages {   
     stage('Maven Compile'){
         steps{
-            withMaven(maven : 'MAVEN_HOME'){
-                 script '''mvn clean compile'''
-            }
+            echo 'Project compile stage'
+            bat label: 'Compilation running', script: '''mvn compile'''
                }
     }
    
