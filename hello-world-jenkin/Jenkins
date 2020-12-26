@@ -14,7 +14,14 @@ agent any
             bat label: 'Test running', script: '''mvn test'''
           
        }
+
        }
+       stage('Maven Package'){
+        steps{
+            echo 'Project packaging stage'
+            bat label: 'Project packaging', script: '''mvn package'''
+        }
+    }     
        stage('Jacoco Coverage Report') {
             steps{
                     jacoco()
@@ -27,12 +34,7 @@ agent any
                 -Dsonar.login=fee394ce357c46b7a630e02d9a858c95169ca7c6'''
             }
            }
-    stage('Maven Package'){
-        steps{
-            echo 'Project packaging stage'
-            bat label: 'Project packaging', script: '''mvn package'''
-        }
-    }        
+       
    
   }
 }
